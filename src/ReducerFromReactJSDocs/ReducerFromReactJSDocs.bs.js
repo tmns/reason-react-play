@@ -36,6 +36,10 @@ function reducer(state, action) {
         return {
                 count: state.count / 5 | 0
               };
+    case /* Reset */4 :
+        return {
+                count: 0
+              };
     
   }
 }
@@ -69,7 +73,12 @@ function ReducerFromReactJSDocs(Props) {
                       onClick: (function (_event) {
                           return Curry._1(dispatch, /* Divide */3);
                         })
-                    }, "/")));
+                    }, "/"), React.createElement("button", {
+                      style: rightButtonStyle,
+                      onClick: (function (_event) {
+                          return Curry._1(dispatch, /* Reset */4);
+                        })
+                    }, "clr")));
 }
 
 var make = ReducerFromReactJSDocs;
