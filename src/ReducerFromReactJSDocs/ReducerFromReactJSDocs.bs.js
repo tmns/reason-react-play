@@ -32,6 +32,10 @@ function reducer(state, action) {
         return {
                 count: Caml_int32.imul(state.count, 5)
               };
+    case /* Divide */3 :
+        return {
+                count: state.count / 5 | 0
+              };
     
   }
 }
@@ -60,7 +64,12 @@ function ReducerFromReactJSDocs(Props) {
                       onClick: (function (_event) {
                           return Curry._1(dispatch, /* Multiply */2);
                         })
-                    }, "*")));
+                    }, "*"), React.createElement("button", {
+                      style: rightButtonStyle,
+                      onClick: (function (_event) {
+                          return Curry._1(dispatch, /* Divide */3);
+                        })
+                    }, "/")));
 }
 
 var make = ReducerFromReactJSDocs;

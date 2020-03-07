@@ -11,7 +11,8 @@ type state = {count: int};
 type action =
   | Increment
   | Decrement
-  | Multiply;
+  | Multiply
+  | Divide;
 
 let initialState = {count: 0};
 
@@ -20,6 +21,7 @@ let reducer = (state, action) => {
   | Increment => {count: state.count + 1}
   | Decrement => {count: state.count - 1}
   | Multiply => {count: state.count * 5}
+  | Divide => {count: state.count / 5}
   };
 };
 
@@ -43,6 +45,9 @@ let make = () => {
       </button>
       <button style=rightButtonStyle onClick={_event => dispatch(Multiply)}>
         {React.string("*")}
+      </button>
+      <button style=rightButtonStyle onClick={_event => dispatch(Divide)}>
+        {React.string("/")}
       </button>
     </div>
   </div>;
