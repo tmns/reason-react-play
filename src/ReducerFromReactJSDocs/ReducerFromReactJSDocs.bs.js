@@ -2,6 +2,7 @@
 
 var Curry = require("bs-platform/lib/js/curry.js");
 var React = require("react");
+var Caml_int32 = require("bs-platform/lib/js/caml_int32.js");
 
 var leftButtonStyle = {
   width: "48px",
@@ -18,14 +19,20 @@ var initialState = {
 };
 
 function reducer(state, action) {
-  if (action) {
-    return {
-            count: state.count - 1 | 0
-          };
-  } else {
-    return {
-            count: state.count + 1 | 0
-          };
+  switch (action) {
+    case /* Increment */0 :
+        return {
+                count: state.count + 1 | 0
+              };
+    case /* Decrement */1 :
+        return {
+                count: state.count - 1 | 0
+              };
+    case /* Multiply */2 :
+        return {
+                count: Caml_int32.imul(state.count, 5)
+              };
+    
   }
 }
 
@@ -48,7 +55,12 @@ function ReducerFromReactJSDocs(Props) {
                       onClick: (function (_event) {
                           return Curry._1(dispatch, /* Increment */0);
                         })
-                    }, "+")));
+                    }, "+"), React.createElement("button", {
+                      style: rightButtonStyle,
+                      onClick: (function (_event) {
+                          return Curry._1(dispatch, /* Multiply */2);
+                        })
+                    }, "*")));
 }
 
 var make = ReducerFromReactJSDocs;
