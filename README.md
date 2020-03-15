@@ -1,6 +1,6 @@
-# Conjunary
+# Reason(React) Play 
 
-WIP conjugation / dictionary to explore and learn Reason & (Reason)React.
+Exploring and learning with ReasonML & (Reason)React.
 
 --------------
 
